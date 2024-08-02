@@ -1,0 +1,124 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <div class="divSearch">
+    <div class="search-container">
+      <form>
+        <figure>
+          <img
+            class="icon-search"
+            src="assets/icons/search.svg"
+            alt="Icone de lupa para pesquisa"
+            style="cursor: pointer"
+          />
+          <input
+            class="inputSearch"
+            type="text"
+            placeholder="Buscar documento"
+            (input)="search($event)"
+          />
+          <a
+            href="https://servicedesk.sercompe.com.br/otrs/index.pl?Action=AgentFAQZoom;ItemID=401"
+            target="_blank"
+            >Ajuda</a
+          >
+          <button
+            class="buttomNewMap btn btn-primary"
+            color="primary"
+            (click)="openDialogVeeamCreate($event)"
+          >
+            Novo Mapeamento
+          </button>
+        </figure>
+      </form>
+    </div>
+  </div>
+  <div class="divTable">
+    <table
+      class="table table-striped table-hover mt-3 text-center table-bordered"
+    >
+      <thead>
+        <tr>
+          <th class="thSort" (click)="sortTable('id')" style="background-color: #90cae1">
+            id
+          </th>
+          <th class="thSort"
+            (click)="sortTable('VeeamRepoFilesystem')"
+            style="background-color: #95deb7"
+          >
+            Veeam Repository
+          </th>
+          <th class="thSort"
+            (click)="sortTable('VeeamTenant')"
+            style="background-color: #95deb7"
+          >
+            Veeam Tenant
+          </th>
+          <th class="thSort"
+            (click)="sortTable('VeeamAcronym')"
+            style="background-color: #95deb7"
+          >
+            Prefixo do Cliente
+          </th>
+          <th class="thSort"
+            (click)="sortTable('LigeroCustomerId')"
+            style="background-color: #aa95de"
+          >
+            Ligero Customer ID
+          </th>
+          <th class="thSort"
+            (click)="sortTable('LigeroEmail')"
+            style="background-color: #aa95de"
+          >
+            Ligero E-mail
+          </th>
+          <th class="thSort"
+            (click)="sortTable('LigeroService')"
+            style="background-color: #aa95de"
+          >
+            Ligero Serviço
+          </th>
+          <th style="background-color: #90cae1">Última Alteração</th>
+          <th style="background-color: #90cae1">Opções</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+        <tr class="tableValues">
+          <td>aaa</td>
+          <td>aaa</td>
+          <td>aaa</td>
+          <td>aaa</td>
+          <td>aaa</td>
+          <td>aaa</td>
+          <td>aaa</td>
+          <td>aaa</td>
+          <td>
+            <button
+              color="primary"
+              class="btn btn-info"
+              (click)="openDialogVeeamEdit('item')"
+            >
+              Editar
+            </button>
+            <button
+              color="warn"
+              class="btn btn-danger"
+              (click)="openDialogVeeamDelete('item')"
+            >
+              Remover
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
