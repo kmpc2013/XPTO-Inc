@@ -1,0 +1,145 @@
+<p>new-branche works!</p>
+<header>
+  <h2 mat-dialog-title class="Title">Criando nova Filial</h2>
+  <button (click)="closeModal()">
+    <img
+      class="closeButton"
+      src="assets/close.svg"
+      alt="Botão para fechar o dialogo"
+      height="20px"
+      width="20px"
+    />
+  </button>
+</header>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="formDiv">
+    <table>
+      <tr>
+        <td class="formName">Código:</td>
+        <td>
+          <input
+            class="formInput"
+            formControlName="codigo"
+            placeholder="Código da filial"
+            type="text"
+            maxlength="200"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="formName">Responsável:</td>
+        <td>
+          <input
+            class="formInput"
+            formControlName="responsavel"
+            placeholder="Nome do Responsável"
+            type="text"
+            maxlength="45"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="formName">Foto:</td>
+        <td>
+          <input
+            class="formInput"
+            formControlName="foto"
+            placeholder="..."
+            type="file"
+            (change)="onFileChange($event)"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="formName">CEP:</td>
+        <td>
+          <input
+            class="formInput"
+            formControlName="cep"
+            placeholder="00000000"
+            type="text"
+            maxlength="8"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="formName">UF:</td>
+        <td>
+          <input
+            class="formInput readonly"
+            formControlName="uf"
+            placeholder="..."
+            type="text"
+            maxlength="45"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="formName">Cidade:</td>
+        <td>
+          <input
+            class="formInput readonly"
+            formControlName="cidade"
+            placeholder="..."
+            type="text"
+            maxlength="45"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="formName">Bairro:</td>
+        <td>
+          <input
+            class="formInput readonly"
+            formControlName="bairro"
+            placeholder="..."
+            type="text"
+            maxlength="45"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="formName">Logradouro:</td>
+        <td>
+          <input
+            class="formInput readonly"
+            formControlName="logradouro"
+            placeholder="..."
+            type="text"
+            maxlength="45"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="formName">Número:</td>
+        <td>
+          <input
+            class="formInput"
+            formControlName="numero"
+            placeholder="..."
+            type="text"
+            maxlength="45"
+            required
+          />
+        </td>
+      </tr>
+    </table>
+  </div>
+  <button
+    mat-raised-button
+    type="button"
+    class="btn btn-outline-primary"
+    [disabled]="!formGroup.valid"
+    (click)="onSubmit()"
+  >
+    Save
+  </button>
+</form>

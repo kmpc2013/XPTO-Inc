@@ -33,9 +33,7 @@ export class RemessaTableComponent {
 
   getAllRequests() {
     this.backService.getAllResquests().subscribe((data: IRequest[]) => {
-      for (var i in data) {
-        data[i].data_prevista = new Date(data[i].data_prevista);
-      }
+      console.log("AQUIII")
       this.allRequests = data;
       this.allRequestsFiltered = this.allRequests;
       this.sortTable('codigo');

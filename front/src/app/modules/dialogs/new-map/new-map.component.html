@@ -14,130 +14,33 @@
   <div class="formDiv">
     <table>
       <tr>
-        <td class="formName">Código:</td>
+        <td class="formName">Ponto de coleta:</td>
         <td>
-          <input
-            class="formInput"
-            formControlName="codigo"
-            placeholder="Código da filial"
-            type="text"
-            maxlength="200"
-            required
-          />
+          <select formControlName="ponto_de_coleta">
+            @for(item of allBranches; track item;){
+              <option value="{{ item.codigo }}">{{ item.codigo }} - {{ item.cidade }} - {{ item.responsavel }}</option>
+            }
+          </select>
         </td>
       </tr>
       <tr>
-        <td class="formName">CEP:</td>
+        <td class="formName">Unidade Destino:</td>
         <td>
-          <input
-            class="formInput"
-            formControlName="cep"
-            placeholder="00000000"
-            type="text"
-            maxlength="8"
-            required
-          />
+          <select formControlName="unidade_destino">
+            @for(item of allBranches; track item;){
+              <option value="{{ item.codigo }}">{{ item.codigo }} - {{ item.cidade }} - {{ item.responsavel }}</option>
+            }
+          </select>
         </td>
       </tr>
       <tr>
-        <td class="formName">Responsável:</td>
+        <td class="formName">Mercadoria:</td>
         <td>
           <input
             class="formInput"
-            formControlName="responsavel"
+            formControlName="mercadoria"
             placeholder="Nome do Responsável"
             type="text"
-            maxlength="45"
-            required
-          />
-        </td>
-      </tr>
-      <tr>
-        <td class="formName">Foto:</td>
-        <td>
-          <input
-            class="formInput"
-            formControlName="foto"
-            placeholder="..."
-            type="file"
-            (change)="onFileChange($event)"
-            required
-          />
-        </td>
-      </tr>
-      <tr>
-        <td class="formName">UF:</td>
-        <td>
-          <input
-            class="formInput readonly"
-            formControlName="uf"
-            placeholder="..."
-            type="text"
-            maxlength="45"
-            readonly
-          />
-        </td>
-      </tr>
-      <tr>
-        <td class="formName">Cidade:</td>
-        <td>
-          <input
-            class="formInput readonly"
-            formControlName="cidade"
-            placeholder="..."
-            type="text"
-            maxlength="45"
-            readonly
-          />
-        </td>
-      </tr>
-      <tr>
-        <td class="formName">Bairro:</td>
-        <td>
-          <input
-            class="formInput readonly"
-            formControlName="bairro"
-            placeholder="..."
-            type="text"
-            maxlength="45"
-            readonly
-          />
-        </td>
-      </tr>
-      <tr>
-        <td class="formName">Logradouro:</td>
-        <td>
-          <input
-            class="formInput readonly"
-            formControlName="logradouro"
-            placeholder="..."
-            type="text"
-            maxlength="45"
-            readonly
-          />
-        </td>
-      </tr>
-      <tr>
-        <td class="formName">Número:</td>
-        <td>
-          <input
-            class="formInput"
-            formControlName="numero"
-            placeholder="..."
-            type="text"
-            maxlength="45"
-            required
-          />
-        </td>
-      </tr>
-      <tr>
-        <td class="formName">Data de Entrega Prevista:</td>
-        <td>
-          <input
-            class="formInput"
-            formControlName="data_prevista"
-            placeholder="..."
-            type="date"
             maxlength="45"
             required
           />
@@ -149,7 +52,6 @@
     mat-raised-button
     type="button"
     class="btn btn-outline-primary"
-    [disabled]="!formGroup.valid"
     (click)="onSubmit()"
   >
     Save

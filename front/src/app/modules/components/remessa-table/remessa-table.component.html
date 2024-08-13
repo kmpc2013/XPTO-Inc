@@ -44,32 +44,20 @@
   >
     <thead>
       <tr>
-        <th style="background-color: #90cae1" type="text">codigo</th>
-        <th style="background-color: #90cae1" type="number">cep</th>
-        <th style="background-color: #90cae1" type="text">responsavel</th>
-        <th style="background-color: #90cae1" type="text">foto</th>
-        <th style="background-color: #90cae1" type="text">uf</th>
-        <th style="background-color: #90cae1" type="text">cidade</th>
-        <th style="background-color: #90cae1" type="text">bairro</th>
-        <th style="background-color: #90cae1" type="text">logradouro</th>
-        <th style="background-color: #90cae1" type="number">numero</th>
-        <th style="background-color: #90cae1" type="date">data_prevista</th>
+        <th style="background-color: #90cae1" type="text">ponto_de_coleta</th>
+        <th style="background-color: #90cae1" type="text">unidade_destino</th>
+        <th style="background-color: #90cae1" type="text">mercadoria</th>
+        <th style="background-color: #90cae1" type="text">estado</th>
         <th style="background-color: #90cae1" >Opções</th>
       </tr>
     </thead>
     @for(item of allRequestsFiltered; track item;){
       <tbody id="data">
         <tr class="tableValues">
-          <td>{{ item.codigo }}</td>
-          <td>{{ item.cep }}</td>
-          <td>{{ item.responsavel }}</td>
-          <td>{{ item.foto }}</td>
-          <td>{{ item.uf }}</td>
-          <td>{{ item.cidade }}</td>
-          <td>{{ item.bairro }}</td>
-          <td>{{ item.logradouro }}</td>
-          <td>{{ item.numero }}</td>
-          <td>{{ item.data_prevista }}</td>
+          <td>{{ item.ponto_de_coleta }}</td>
+          <td>{{ item.unidade_destino }}</td>
+          <td>{{ item.mercadoria }}</td>
+          <td>{{ item.estado }}</td>
           <td>
             <button
               color="primary"

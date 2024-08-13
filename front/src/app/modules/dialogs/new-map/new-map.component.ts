@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { CepService } from '../../services/cep.service';
 import { BackService } from '../../services/back.service';
+import { IBranche } from '../../interface/IBranche';
 
 @Component({
   selector: 'app-new-map',
@@ -22,12 +23,12 @@ export class NewMapComponent {
   formGroup!: FormGroup;
   data = [];
   selectedFile: File | null = null;
+  public allBranches: IBranche[] = [];
 
   constructor(
     private _diaLogRef: MatDialogRef<NewMapComponent>,
     private formBuilder: FormBuilder,
     public matSnackBar: MatSnackBar,
-    private cepService: CepService,
     private backService: BackService
   ) {}
 
@@ -35,27 +36,12 @@ export class NewMapComponent {
     return this._diaLogRef.close();
   }
 
-  private clearAddressFields(): void {
-    this.formGroup.patchValue(
-      {
-        street: '',
-        city: '',
-        state: '',
-      },
-      { emitEvent: false }
-    );
-  }
-  
-  private dateValidator(control: any) {
-    const today = new Date();
-    const selectedDate = new Date(control.value);
-    return selectedDate < today ? { dateInvalid: true } : null;
-  }
-  
-  onFileChange(event: any) {
-    if (event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0];
-    }
+  getAllBranches() {
+    this.backService.getAllBranches().subscribe((data: IBranche[]) => {
+      console.log("Coletando todas as filiais")
+      this.allBranches = data;
+    });
+    
   }
 
   onSubmit(): void {
@@ -77,38 +63,13 @@ export class NewMapComponent {
   }
 
   ngOnInit(): void {
+    this.getAllBranches();
+
     this.formGroup = this.formBuilder.group({
-      codigo: ['', Validators.required],
-      cep: ['', Validators.required],
-      responsavel: ['', Validators.required],
-      foto: ['', Validators.required],
-      uf: '',
-      cidade: '',
-      bairro: '',
-      logradouro: '',
-      numero: ['', Validators.required],
-      data_prevista: '',
-    });
-  
-    this.formGroup.get('cep')?.valueChanges.subscribe((cep) => {
-      console.log('aqui');
-      if (cep.length === 8) {
-        this.cepService.getAddressByCep(cep).subscribe((data) => {
-          if (data && !data.erro) {
-            this.formGroup.patchValue({
-              logradouro: data.logradouro,
-              cidade: data.localidade,
-              uf: data.uf,
-              bairro: data.bairro,
-            });
-            console.log(data.logradouro);
-          } else {
-            this.clearAddressFields();
-          }
-        });
-      } else {
-        this.clearAddressFields();
-      }
+      ponto_de_coleta: ['', Validators.required],
+      unidade_destino: ['', Validators.required],
+      mercadoria: ['', Validators.required],
+      estado: 'Disponível para coleta',
     });
   }
 }
